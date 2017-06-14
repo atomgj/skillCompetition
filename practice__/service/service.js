@@ -26,7 +26,7 @@ service = {
     },
     pageQuery: function (param, response) {
         if (!param.userId) {
-            response.end("{code: 401, message: 'unauthorized!'}");
+            response.end('{"code": 401, "message": "unauthorized!"}');
         } else {
             factory.getStartIndex(param);
             serviceImpl.pageQuery(param, function (data) {
@@ -37,7 +37,7 @@ service = {
     },
     getById: function (param, response) {
         if (!param.userId) {
-            response.end("{code: 401, message: 'unauthorized!'}");
+            response.end('{"code": 401, "message": "unauthorized!"}');
         } else {
             serviceImpl.getById(param, function (data) {
                 response.end(JSON.stringify(data));
@@ -46,7 +46,7 @@ service = {
     },
     modify: function (param, response) {
         if (!param.userId) {
-            response.end("{code: 401, message: 'unauthorized!'}");
+            response.end('{"code": 401, "message": "unauthorized!"}');
         } else {
             serviceImpl.modify(param, function (data) {
                 response.end(JSON.stringify(data));
@@ -55,7 +55,7 @@ service = {
     },
     like: function (param, response) {
         if (!param.userId) {
-            response.end("{code: 401, message: 'unauthorized!'}");
+            response.end('{"code": 401, "message": "unauthorized!"}');
         } else {
             serviceImpl.like(param, function (data) {
                 response.end(JSON.stringify(data));

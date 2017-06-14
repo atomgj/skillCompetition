@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h4>搜索</h4>
+<div class="search">
+    <div class="row">
+        <input id="name" type="text" placeholder="名称"/>
+        <input id="price" type="text" placeholder="价格"/>
+        <select id="category">
+            <option value="">分类</option>
+            <option value="小说">小说</option>
+            <option value="散文">散文</option>
+            <option value="编程">编程</option>
+            <option value="文学">文学</option>
+        </select>
+        <select id="sortColumns">
+            <option value="">排序</option>
+            <option value="updateTime">时间</option>
+        </select>
+        <select id="sortType">
+            <option value="">排序类型</option>
+            <option value="ASC">顺序</option>
+            <option value="DESC">倒序</option>
+        </select>
+        <select id="timeType">
+            <option value="">时间类型</option>
+            <option value="1">近1天</option>
+            <option value="2">近3天</option>
+            <option value="3">近7天</option>
+            <option value="4">近5分钟</option>
+        </select>
+        <input type="button" value="search" onclick="doSearch();"/>
+    </div>
+</div>
+<h4>列表</h4>
+<div class="list">
+    <table class="table">
+        <thead>
+        <tr class="thead">
+            <th>编号</th>
+            <th>名称</th>
+            <th>价格</th>
+            <th>分类</th>
+            <th>更新时间</th>
+            <th>收藏数</th>
+        </tr>
+        </thead>
+        <tbody class="dataList">
+        <tr>
+            <td>编号</td>
+            <td>名称</td>
+            <td>价格</td>
+            <td>分类</td>
+            <td>更新时间</td>
+            <td>收藏数</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="page">
+        <a id="first" onclick="gotoPage('--')">首页</a>
+        <a id="prev" onclick="gotoPage('-')">上一页</a>
+        <span>
+
+        </span>
+        <a id="next" onclick="gotoPage('+')">下一页</a>
+        <a id="last" onclick="gotoPage('++')">尾页</a>
+    </div>
+</div>
+</div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+    $(function () {
+        pageQuery();
+    });
+</script>
+</html>

@@ -6,8 +6,8 @@ serviceImpl = {
     login: function (param, callback) {
         var sql, arr, rtl = {};
 
-        sql = "select * from t_user where (username=? or mobile =?) and password = ?";
-        arr = [param.username, param.mobile, param.password];
+        sql = "select * from t_user where (username=? or mobile =? or email = ?) and password = ?";
+        arr = [param.username, param.username, param.username, param.password];
 
         db.query(sql, arr, function (e, rows) {
             if (e) {
@@ -15,7 +15,7 @@ serviceImpl = {
                 rtl.message = e.message;
             } else if (rows.length) {
                 rtl.code = 200;
-                rtl.data = rows;
+                rtl.data = rows[0];
             } else {
                 rtl.code = 500;
                 rtl.message = "username or password is incorrect!";
@@ -26,8 +26,8 @@ serviceImpl = {
     register: function (param, callback) {
         var sql, arr, rtl = {};
 
-        sql = "select * from t_user where username=? or mobile =?";
-        arr = [param.username, param.mobile];
+        sql = "select * from t_user where username=? or mobile =? or email =?";
+        arr = [param.username, param.mobile, param.email];
 
         db.query(sql, arr, function (e, rows) {
             if (e) {
@@ -36,7 +36,7 @@ serviceImpl = {
                 callback(rtl);
             } else if (rows.length) {
                 rtl.code = 600;
-                rtl.message = "username or mobile is already exist!";
+                rtl.message = "username/mobile/email is already exist!";
                 callback(rtl);
             } else {
                 sql = "select max(userId) as id from t_user ";
@@ -46,8 +46,8 @@ serviceImpl = {
                         rtl.message = ee.message;
                         callback(rtl);
                     } else {
-                        sql = "insert into t_user (userId, username, mobile, password, role ) values (?,?,?,?,?)";
-                        arr = [_rows[0].id + 1, param.username, param.mobile, param.password, param.role || 0];
+                        sql = "insert into t_user (userId, username, mobile, email, password, role) values (?,?,?,?,?,?)";
+                        arr = [_rows[0].id + 1, param.username, param.mobile, param.email, param.password, param.role || 0];
                         db.query(sql, arr, function (eee, __rows) {
                             if (eee) {
                                 rtl.code = 500;

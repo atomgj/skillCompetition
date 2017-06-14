@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<form>
+    <div class="row">
+        <h3>用户登录</h3>
+    </div>
+    <div class="row">
+        <input type="text" id="username" placeholder="用户名/邮箱/手机号" />
+    </div>
+    <div class="row">
+        <input type="password" id="password" placeholder="用户名" />
+    </div>
+    <div class="row">
+        <input type="checkbox" id="rem" onclick="remember()"/>
+        <span>记住密码</span>
+    </div>
+    <div class="row">
+        <input type="button" value="登录" onclick="login()"/>
+    </div>
+    <div class="row">
+        <a href="register.html">注册</a>
+    </div>
+</form>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+    $(function(){
+
+        var isRem = localStorage.getItem('isRem'),
+            loginInfo = localStorage.getItem('loginInfo');
+
+        if(isRem){
+            loginInfo = JSON.parse(loginInfo);
+            $("#username").val(loginInfo.username);
+            $("#password").val(loginInfo.password);
+            $("#rem").attr('checked', isRem);
+        }
+    });
+
+    function remember(){
+        var checked = $("#rem").attr('checked');
+        if(checked){
+            $("#rem").attr('checked', false);
+        }else{
+            $("#rem").attr('checked', true);
+        }
+    }
+</script>
+</html>
