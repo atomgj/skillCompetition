@@ -2,9 +2,8 @@ var search = {
     sortColumns: 'updateTime',
     sortType: 'asc',
     pageNo: 1,
-    pageSize: 4
+    pageSize: 5
 };
-
 
 var login = function () {
     var username = $('#username').val(),
@@ -37,7 +36,7 @@ var login = function () {
             }
         },
         error: function () {
-            alert("请求错误");
+            alert("http请求异常!");
         }
     });
 };
@@ -67,7 +66,7 @@ var register = function () {
             }
         },
         error: function () {
-            alert("请求错误");
+            alert("http请求异常!");
         }
     });
 
@@ -100,6 +99,7 @@ var pageQuery = function () {
                     html += "<td>" + rows[i].category + "</td>";
                     html += "<td>" + rows[i].updateTime + "</td>";
                     html += "<td>" + (rows[i].count == null ? 0 : rows[i].count) + "</td>";
+                    html += "<td><a href='edit.html?commodityId="+rows[i].commodityId+"'>编辑</a>&nbsp;&nbsp;<a href='view.html?commodityId="+rows[i].commodityId+"'>查看</a></td>";
                     html += "</tr>";
                     $('.dataList').append(html);
                 }
@@ -117,9 +117,10 @@ var pageQuery = function () {
                 }
                 $('.page span').append(span);
 
-                if (pageCount == 1) {
+                if (pageCount <= 1) {
                     $('.page').hide();
                 } else {
+                    $('.page').show();
                     $('#next, #last, #first, #prev').removeClass('disable');
                     if (pageNo == 1) {
                         $('#first, #prev').addClass('disable');
@@ -137,7 +138,7 @@ var pageQuery = function () {
             }
         },
         error: function () {
-            alert("请求错误");
+            alert("http请求异常!");
         }
     });
 };
@@ -183,3 +184,106 @@ function doSearch(){
     search.pageSize = 4;
     pageQuery();
 }
+
+function edit(id){
+
+}
+
+function view(id, type){
+    var user = sessionStorage.getItem('user');
+    if (user) {
+        user = JSON.parse(user);
+    }
+
+    $('#commodityId').val(id);
+    $.ajax({
+        url: 'http://127.0.0.1:3000/view',
+        type: 'POST',
+        data: {
+            "userId" : user.userId,
+            "commodityId" : id
+        },
+        success: function (rep) {
+            var result = JSON.parse(rep);
+            if (result.code == 200) {
+                var data = result.data;
+                if(type){
+                    $('#name').val(data.name);
+                    $('#category').val(data.category);
+                    $('#price').val(data.price);
+                }else{
+                    $('#name').text(data.name);
+                    $('#like').html("<a onclick='like("+id+","+(data.count==null ? 0 : data.count)+")'>"+(data.count==null ? 0 : data.count)+"</a>");
+                    $('#category').text(data.category);
+                    $('#price').text(data.price);
+                    $('#updateTime').text(data.updateTime);
+                    $('#userId').text(data.userId);
+                }
+            } else {
+                alert(result.message);
+            }
+        },
+        error: function () {
+            alert("http请求异常!");
+        }
+    });
+}
+
+function like(id, total){
+    var user = sessionStorage.getItem('user');
+    if (user) {
+        user = JSON.parse(user);
+    }
+    $.ajax({
+        url: 'http://127.0.0.1:3000/like',
+        type: 'POST',
+        data: {
+            "userId" : user.userId,
+            "commodityId" : id
+        },
+        success: function (rep) {
+            var result = JSON.parse(rep);
+            if (result.code == 200) {
+                var data = result.data;
+                var like = total+data;
+                $('#like').html("<a onclick='like("+id+","+like+")'>"+like+"</a>");
+            } else {
+                alert(result.message);
+            }
+        },
+        error: function () {
+            alert("http请求异常!");
+        }
+    });
+}
+
+function edit(){
+    var user = sessionStorage.getItem('user');
+    if (user) {
+        user = JSON.parse(user);
+    }
+    var id = $('#commodityId').val();
+    $.ajax({
+        url: 'http://127.0.0.1:3000/edit',
+        type: 'POST',
+        data: {
+            "userId" : user.userId,
+            "commodityId" : id,
+            "name" : $('#name').val(),
+            "category" : $('#category').val(),
+            "price" : $('#price').val()
+        },
+        success: function (rep) {
+            var result = JSON.parse(rep);
+            if (result.code == 200) {
+                location.href = "index.html";
+            } else {
+                alert(result.message);
+            }
+        },
+        error: function () {
+            alert("http请求异常!");
+        }
+    });
+}
+

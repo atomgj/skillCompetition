@@ -47,7 +47,7 @@ serviceImpl = {
                         callback(rtl);
                     } else {
                         sql = "insert into t_user (userId, username, mobile, email, password, role) values (?,?,?,?,?,?)";
-                        arr = [_rows[0].id + 1, param.username, param.mobile, param.email, param.password, param.role || 0];
+                        arr = [_rows[0].id + 1, param.username, param.mobile, param.email, param.password, param.role || 1];
                         db.query(sql, arr, function (eee, __rows) {
                             if (eee) {
                                 rtl.code = 500;
@@ -70,19 +70,19 @@ serviceImpl = {
             strList = " a.*, b.count ",
             end = " from t_commodity a left join (select count(*) count , commodityId from t_like group by commodityId) b on a.commodityId = b.commodityId where 1=1 ",
             condition = "",
-            order = " order by ? ? limit ? , ? ";
+            order = " order by " + (param.sortColumns || 'updateTime') + " " + (param.sortType || 'ASC') + " limit ? , ? ";
 
         if (param.name) {
-            condition += " and a.name = '" + param.name +"'";
+            condition += " and a.name = '" + param.name + "'";
         }
         if (param.price) {
-            condition += " and a.price = " + param.price;
+            condition += " and a.price = " + parseFloat(param.price);
         }
         if (param.category) {
             condition += " and a.category like '%" + param.category + "%'";
         }
-        if (!param.role) {
-            condition += " and a.userId = " + param.userId;
+        if (parseInt(param.role)) {
+            condition += " and a.userId = " + parseInt(param.userId);
         }
         if (param.timeType) {
             if (param.timeType == 1) {
@@ -107,7 +107,7 @@ serviceImpl = {
                 callback(rtl);
             } else {
                 sql = start + strList + end + condition + order;
-                arr = [param.sortColumns || 'updateTime', param.sortType || 'ASC', param.startIndex || 0, param.pageSize || 5];
+                arr = [param.startIndex || 0, param.pageSize || 5];
 
                 db.query(sql, arr, function (ee, _rows) {
                     if (ee) {
@@ -181,7 +181,7 @@ serviceImpl = {
                         rtl.message = ee.message;
                     } else {
                         rtl.code = 200;
-                        rtl.message = "unlike success!";
+                        rtl.data = -1;
                     }
                     callback(rtl);
                 });
@@ -193,7 +193,7 @@ serviceImpl = {
                         rtl.message = ee.message;
                     } else {
                         rtl.code = 200;
-                        rtl.message = "like succcess";
+                        rtl.data = 1;
                     }
                     callback(rtl);
                 });

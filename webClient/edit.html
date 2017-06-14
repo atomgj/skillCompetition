@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="top">
+    <a href="login.html">重新登录</a>
+</div>
+<div class="center">
+    <div class="view">
+        <input type="hidden" id="commodityId">
+        <div class="row">
+            <div class="key">名称:</div>
+            <div class="value"><input type="text" id="name"/></div>
+        </div>
+        <div class="row">
+            <div class="key">分类:</div>
+            <div class="value"><input type="text" id="category"/></div>
+        </div>
+        <div class="row">
+            <div class="key">价格:</div>
+            <div class="value"><input type="text" id="price"/></div>
+        </div>
+        <div class="row">
+            <div class="value"><input type="button" value="提交" onclick="edit()"/></div>
+        </div>
+        <div class="row">
+            <a href="index.html">返回列表</a>
+        </div>
+    </div>
+</div>
+</body>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+    $(function () {
+        var url = location.href;
+        var query = url.split('?')[1];
+        var id = query.split('=')[1];
+        view(id, true);
+    });
+</script>
+</html>
