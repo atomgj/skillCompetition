@@ -6,6 +6,7 @@ span, div, a {
 a {
     text-decoration: none;
     color: #d75000;
+    cursor: pointer;
 }
 
 a:hover {
@@ -77,6 +78,30 @@ input[type=button]:hover {
 
 ul li {
     list-style: none;
+}
+
+.cate-span{
+    padding-left: 10px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.category{
+    padding-left: 20px;
+}
+.cate-li a{
+    color: #000 !important;
+    margin: 5px;
+}
+
+.cate-li a:hover{
+    color: #005667 !important;
+    font-weight: bold !important;
+}
+
+.active{
+    color: #005667 !important;
+    font-weight: bold !important;
 }
 
 .data-item {

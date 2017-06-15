@@ -89,8 +89,9 @@ function getCategory(){
             if (result.code == 200) {
                 var i, rows = result.data, ul = "";
                 $('.category').empty();
+                ul += "<li class='cate-li active'><a onclick='setCategory(all)' id='all'></a></li>";
                 for(i=0;i<rows.length;i++){
-                    ul += "<li>"+rows[i].categoryName+"</li>"
+                    ul += "<li class='cate-li'><a onclick='setCategory("+rows[i].categoryId+")' id='"+rows[i].categoryId+"'>"+rows[i].categoryName+"</a></li>"
                 }
                 $('.category').append(ul);
             } else {
@@ -105,4 +106,9 @@ function getCategory(){
 
 function pageQuery(){
 
+}
+
+function setCategory(id){
+    $('.cate-li').removeClass('active');
+    $('#'+id).parent().addClass('active');
 }
