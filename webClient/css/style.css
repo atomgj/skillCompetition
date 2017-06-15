@@ -33,6 +33,12 @@ input[type=button]:hover {
     color: #fff;
 }
 
+.small{
+    border: 1px #348022 solid;
+    border-radius: 1px;
+    width: 40px!important;
+}
+
 .rem {
     margin-left: 5px;
 }

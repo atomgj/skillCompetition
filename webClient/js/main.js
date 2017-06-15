@@ -110,12 +110,13 @@ var pageQuery = function () {
                 pageCount = Math.ceil(totalCount / pageSize);
                 search.pageCount = pageCount;
 
-                $('.page span').empty();
+                $('.item').empty();
+                $('#pageCount').text(pageCount);
                 var span = "";
                 for (i = 1; i <= pageCount; i++) {
                     span += "<a onclick='gotoPage(" + i + ")' class='" + (i == pageNo ? "active" : "") + "'>" + i + "</a>";
                 }
-                $('.page span').append(span);
+                $('.item').append(span);
 
                 if (pageCount <= 1) {
                     $('.page').hide();
@@ -153,6 +154,8 @@ function gotoPage(sb) {
         search.pageNo = search.pageNo + 1;
     } else if (sb == '++') {
         search.pageNo = search.pageCount;
+    } else if (sb == '*'){
+        search.pageNo = parseInt($('#num').val()) || 1;
     } else {
         search.pageNo = sb;
     }
