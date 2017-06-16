@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="top"></div>
+<div class="main">
+    <div class="form">
+        <div class="row">
+            <div class="label">
+                &nbsp;
+            </div>
+            <div class="text">
+                <span class="title">用户注册</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">
+                用户名:
+            </div>
+            <div class="text">
+                <input type="text" id="username" placeholder="用户名"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">
+                手机号:
+            </div>
+            <div class="text">
+                <input type="text" id="mobile" placeholder="手机号"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">
+                邮箱:
+            </div>
+            <div class="text">
+                <input type="text" id="email" placeholder="邮箱"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">
+                密码:
+            </div>
+            <div class="text">
+                <input type="password" id="password" placeholder="密码"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">
+                确认密码:
+            </div>
+            <div class="text">
+                <input type="password" id="ckPassword" placeholder="确认密码"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">
+                &nbsp;
+            </div>
+            <div class="text">
+                <input type="button" onclick="register()" value="注册"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">
+                &nbsp;
+            </div>
+            <div class="text">
+                <a href="login.html">已有账号，直接登录</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+    $(function () {
+        var isRem = localStorage.getItem('isRem'),
+            loginInfo = localStorage.getItem('loginInfo');
+        if (isRem && loginInfo) {
+            loginInfo = JSON.parse(loginInfo);
+            $('#username').val(loginInfo.username);
+            $('#password').val(loginInfo.password);
+            $("#isRem").attr('checked', true);
+        } else {
+            $('#username').val('');
+            $('#password').val('');
+            $("#isRem").attr('checked', false);
+        }
+    });
+
+    function register() {
+
+        var data = {
+            username: $('#username').val(),
+            password: $('#password').val(),
+            ckPassword: $('#ckPassword').val(),
+            mobile: $('#mobile').val(),
+            email: $('#email').val()
+        };
+
+        $.ajax({
+            url: 'http://127.0.0.1:3000/register',
+            type: 'POST',
+            data: data,
+            success: function (rep) {
+                var result = JSON.parse(rep);
+                if (result.code == 200) {
+                    location.href = "login.html";
+                } else {
+                    alert(result.message);
+                }
+            },
+            error: function () {
+                alert("http请求异常！");
+            }
+        });
+    }
+</script>
+</html>

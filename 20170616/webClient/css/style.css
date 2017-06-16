@@ -1,0 +1,211 @@
+body{
+    background: #ebf8f9;
+    font-size: 12px;
+}
+div, a, span {
+    font-size: 12px;
+    color: #005667;
+}
+
+input[type=text], input[type=password], input[type=button] {
+    width: 180px;
+    height: 24px;
+    border: 1px #005667 solid;
+    border-radius: 2px;
+    padding-left: 5px;
+}
+
+input[type=button] {
+    background: #fff;
+    height: 28px;
+    width: 188px;
+    cursor: pointer;
+}
+
+input[type=button]:hover {
+    background: #005667;
+    color: #fff;
+}
+
+select {
+    width: 80px;
+    height: 28px;
+    border: 1px #005667 solid;
+    border-radius: 2px;
+}
+
+li[disable=true] {
+    color: #b0b0b0;
+}
+
+ul li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
+    color: #d75000;
+}
+
+.top {
+    width: 100%;
+    height: 50px;
+}
+
+.login-info {
+    top: 10px;
+    right: 10px;
+    position: absolute;
+}
+
+.main {
+    width: 1024px;
+    height: 100%;
+    margin: auto;
+}
+
+.form {
+    margin: auto;
+    width: 500px;
+}
+
+.left {
+    position: absolute;
+    padding-top: 20px;
+    width: 200px;
+    top: 55px;
+    left: 0px;
+}
+
+.right {
+    position: absolute;
+    top: 55px;
+    left: 230px;
+}
+
+.row {
+    width: 100%;
+    height: 24px;
+    line-height: 24px;
+    display: inline-flex;
+    margin: 5px;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.label {
+    width: 200px;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.c-span {
+    margin-left: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.c-li {
+    margin: 5px;
+    cursor: pointer;
+}
+
+.s-ul .s-li .row .label {
+    text-align: left;
+    width: 100px;
+    font-weight: 600;
+}
+
+.text {
+    width: 300px;
+    text-align: left;
+}
+
+.items {
+
+}
+
+.t-items {
+    display: inline;
+}
+
+.t-items li {
+    float: left;
+    width: 80px;
+    margin: 0 5px;
+}
+
+.sBtn {
+    width: 50px !important;
+}
+
+.search {
+    border-radius: 5px;
+    border-top: 1px #ebf8f9 solid;
+    margin: 5px;
+    padding: 5px;
+}
+
+.data {
+    width: 100%;
+    border-radius: 5px;
+    border-top: 1px #ebf8f9 solid;
+    margin: 5px;
+    padding: 5px;
+}
+
+.d-ul {
+    display: list-item;
+    list-style: none;
+}
+
+.d-li {
+    float: left;
+    width: 150px;
+    height: 240px;
+    margin: 5px;
+    border: 1px #ebf8f9 solid;
+    border-radius: 5px;
+}
+
+.item-img, .item-price, .item-name, .item-author, .item-favorite, .item-edit {
+    padding-left: 5px;
+}
+
+.item-img, .item-edit {
+    cursor: pointer;
+}
+
+.page {
+    clear: both;
+    width: 100%;
+    height: 24px;
+}
+
+.p-ul {
+    display: inline-flex;
+    right: 0px;
+}
+
+.p-li {
+    cursor: pointer;
+    float: left;
+    text-align: center;
+    width: 50px;
+}
+
+.active {
+    font-weight: bold;
+    color: #d75000;
+}
+
+.fav {
+    margin-right: 5px;
+}

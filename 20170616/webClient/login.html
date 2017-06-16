@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="top"></div>
+<div class="main">
+    <div class="form">
+        <div class="row">
+            <div class="label">
+                &nbsp;
+            </div>
+            <div class="text">
+                <span class="title">用户登录</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">
+                账号:
+            </div>
+            <div class="text">
+                <input type="text" id="username" placeholder="用户名/手机号/邮箱"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">
+                密码:
+            </div>
+            <div class="text">
+                <input type="password" id="password" placeholder="密码"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">
+                &nbsp;
+            </div>
+            <div class="text">
+                <input type="checkbox" id="isRem" onclick="remember()"/><span>记住密码</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">
+                &nbsp;
+            </div>
+            <div class="text">
+                <input type="button" onclick="login()" value="登录"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">
+                &nbsp;
+            </div>
+            <div class="text">
+                <a href="register.html">注册</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+    $(function () {
+        var isRem = localStorage.getItem('isRem'),
+            loginInfo = localStorage.getItem('loginInfo');
+        if (isRem && loginInfo) {
+            loginInfo = JSON.parse(loginInfo);
+            $('#username').val(loginInfo.username);
+            $('#password').val(loginInfo.password);
+            $("#isRem").attr('checked', true);
+        } else {
+            $('#username').val('');
+            $('#password').val('');
+            $("#isRem").attr('checked', false);
+        }
+    });
+
+    function remember() {
+        var checked = !!$("#isRem").attr('checked');
+        $("#isRem").attr('checked', !checked);
+    }
+    function login() {
+
+        if (!$("#isRem").attr('checked')) {
+            localStorage.removeItem('isRem');
+            localStorage.removeItem('loginInfo');
+        }
+
+        var data = {
+            username: $('#username').val(),
+            password: $('#password').val()
+        };
+
+        $.ajax({
+            url: 'http://127.0.0.1:3000/login',
+            type: 'POST',
+            data: data,
+            success: function (rep) {
+                var result = JSON.parse(rep);
+                if (result.code == 200) {
+                    sessionStorage.setItem('user', JSON.stringify(result.data));
+                    location.href = "index.html";
+                } else {
+                    alert(result.message);
+                }
+            },
+            error: function () {
+                alert("http请求异常！");
+            }
+        });
+    }
+</script>
+</html>

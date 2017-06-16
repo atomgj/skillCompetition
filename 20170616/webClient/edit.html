@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="top">
+    <div class="login-info">
+        <span id="login-user"></span>
+        <a href="login.html">重新登录</a>
+    </div>
+</div>
+<div class="main">
+    <div class="right">
+        <div class="text">
+            <a href="index.html">返回列表</a>
+        </div>
+        <div class="search">
+            <input type="hidden" id="bookId">
+            <ul class="s-ul">
+                <li class="s-li">
+                    <div class="row">
+                        <div class="label">
+                            书名:
+                        </div>
+                        <div class="text">
+                            <input type="text" id="bookName" placeholder="书名"/>
+                        </div>
+                    </div>
+                </li>
+                <li class="s-li">
+                    <div class="row">
+                        <div class="label">
+                            作者:
+                        </div>
+                        <div class="text">
+                            <input type="text" id="author" placeholder="作者"/>
+                        </div>
+                    </div>
+                </li>
+                <li class="s-li">
+                    <div class="row">
+                        <div class="label">
+                            价格:
+                        </div>
+                        <div class="text">
+                            <input type="text" id="price" placeholder="价格"/>
+                        </div>
+                    </div>
+                </li>
+                <li class="s-li">
+                    <div class="row">
+                        <div class="label">
+                            分类:
+                        </div>
+                        <div class="text">
+                            <input type="text" id="categoryName" placeholder="分类"/>
+                        </div>
+                    </div>
+                </li>
+                <li class="s-li">
+                    <div class="row">
+                        <div class="label">
+                            &nbsp;
+                        </div>
+                        <div class="text">
+                            <input type="button" class="sBtn" onclick="doEdit()" value="提交"/>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+
+    $(function () {
+        var path = location.href;
+        var query = path.split('?')[1];
+        var id = query.split('=')[1];
+
+        getById(id, true);
+
+    });
+
+</script>
+</html>

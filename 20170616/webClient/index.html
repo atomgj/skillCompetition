@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="top">
+    <div class="login-info">
+        <span id="login-user"></span>
+        <a href="login.html">重新登录</a>
+    </div>
+</div>
+<div class="main">
+    <div class="left">
+        <span class="c-span">书籍分类</span>
+        <ul class="c-ul">
+        </ul>
+        </span>
+    </div>
+    <div class="right">
+        <div class="search">
+            <ul class="s-ul">
+                <li class="s-li">
+                    <div class="row">
+                        <div class="label">
+                            时间:
+                        </div>
+                        <div class="items">
+                            <ul class="t-items">
+                                <li class="t-li active" onclick="doTime(0,this)">全部</li>
+                                <li class="t-li" onclick="doTime(1,this)">近1天</li>
+                                <li class="t-li" onclick="doTime(2,this)">近2天</li>
+                                <li class="t-li" onclick="doTime(3,this)">近7天</li>
+                                <li class="t-li" onclick="doTime(4,this)">近5分钟</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="s-li">
+                    <div class="row">
+                        <div class="label">
+                            书名:
+                        </div>
+                        <div class="text">
+                            <input type="text" id="bookName" placeholder="书名"/>
+                        </div>
+                    </div>
+                </li>
+                <li class="s-li">
+                    <div class="row">
+                        <div class="label">
+                            作者:
+                        </div>
+                        <div class="text">
+                            <input type="text" id="author" placeholder="作者"/>
+                        </div>
+                    </div>
+                </li>
+                <li class="s-li">
+                    <div class="row">
+                        <div class="label">
+                            价格:
+                        </div>
+                        <div class="text">
+                            <input type="text" id="price" placeholder="价格"/>
+                        </div>
+                    </div>
+                </li>
+                <li class="s-li">
+                    <div class="row">
+                        <div class="label">
+                            &nbsp;
+                        </div>
+                        <div class="items">
+                            <ul class="t-items">
+                                <li class="t-li">
+                                    <select id="sortColumns" onchange="pageQuery()">
+                                        <option value="updateTime">时间</option>
+                                        <option value="price">价格</option>
+                                    </select>
+                                </li>
+                                <li class="t-li">
+                                    <select id="sortType" onchange="pageQuery()">
+                                        <option value="ASC">顺序</option>
+                                        <option value="DESC">倒序</option>
+                                    </select>
+                                </li>
+                            </ul>
+                            <input type="button" class="sBtn" onclick="clear()" value="清除"/>
+                            <input type="button" class="sBtn" onclick="doSearch()" value="查询"/>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="data">
+            <ul class="d-ul">
+
+            </ul>
+        </div>
+        <div class="page">
+            <ul class="p-ul">
+                <li class="p-li" id="first" onclick="gotoPage('--')">首页</li>
+                <li class="p-li" id="prev" onclick="gotoPage('-')">上一页</li>
+                <div class="p-item">
+
+                </div>
+                <li class="p-li" id="next" onclick="gotoPage('+')">下一页</li>
+                <li class="p-li" id="last" onclick="gotoPage('++')">尾页</li>
+                <li class="p-li" id="pageCount">共7页</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+
+    $(function () {
+        cateQuery();
+        pageQuery();
+    });
+
+</script>
+</html>

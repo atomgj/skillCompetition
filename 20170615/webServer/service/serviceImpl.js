@@ -77,6 +77,32 @@ serviceImpl = {
             condition = "",
             order = " order by " + (param.sortColumns || 'a.updateTime') + " " + (param.sortType || 'asc') + " limit ?, ?";
 
+        if(param.categoryName){
+            condition += " and c.categoryName like '%"+param.categoryName+"%'";
+        }
+        if(param.bookName){
+            condition += " and a.bookName = '"+param.bookName+"'";
+        }
+        if(param.price){
+            condition += " and a.price = '"+param.price+"'";
+        }
+        if(param.author){
+            condition += " and a.author = '"+param.author+"'";
+        }
+        if(param.timeType){
+            if(param.timeType == 1){
+                condition += " and a.updateTime > date_sub(now(), interval 0 day)";
+            }else if(param.timeType == 2){
+                condition += " and a.updateTime > date_sub(now(), interval 3 day)";
+            }else if(param.timeType == 3){
+                condition += " and a.updateTime > date_sub(now(), interval 7 day)";
+            }else if(param.timeType == 4){
+                condition += " and a.updateTime > date_sub(now(), interval 5 minute)";
+            }
+        }
+        if(param.role){
+            condition += " and a.userid = '"+param.userId+"'";
+        }
         sql = start + strCount + end + condition;
         db.query(sql, function (e, r) {
             if (e) {

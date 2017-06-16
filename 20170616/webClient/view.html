@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="top">
+    <div class="login-info">
+        <span id="login-user"></span>
+        <a href="login.html">重新登录</a>
+    </div>
+</div>
+<div class="main">
+    <div class="text">
+        <a href="index.html">返回列表</a>
+    </div>
+    <input type="hidden" id="bookId">
+    <div class="right">
+        <div class="data">
+            <ul class="d-ul">
+
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+
+    $(function () {
+        var path = location.href;
+        var query = path.split('?')[1];
+        var id = query.split('=')[1];
+
+        getById(id);
+    });
+
+</script>
+</html>
