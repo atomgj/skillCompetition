@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="top"></div>
+<div class="main">
+    <div class="totalSearch">
+        <div class="row">
+            <input type="text" id="searchTxt" placeholder="书籍名/作者"/> <input type="button" id="searchBtn" onclick="doSearch()" value="搜索"/>
+        </div>
+    </div>
+    <div class="searchArea">
+        <ul class="s-item">
+            <li>
+                <span class="s-key">分类：</span>
+                <ul class="s-item-sub s-item-cate">
+                    <li onclick="doCategory(0,this)">全部</li>
+                    <li onclick="doCategory(1,this)">文学</li>
+                    <li onclick="doCategory(2,this)">历史</li>
+                    <li onclick="doCategory(3,this)">科技</li>
+                    <li onclick="doCategory(4,this)">小时</li>
+                </ul>
+            </li>
+            <li>
+                <span class="s-key">价格区间：</span>
+                <ul class="s-item-sub s-item-price">
+                    <li onclick="doPrice(0,this)">全部</li>
+                    <li onclick="doPrice(1,this)">1-50</li>
+                    <li onclick="doPrice(2,this)">50-100</li>
+                    <li onclick="doPrice(3,this)">100-150</li>
+                    <li onclick="doPrice(4,this)">150-200</li>
+                </ul>
+            </li>
+            <li>
+                <span class="s-key">时间：</span>
+                <ul class="s-item-sub s-item-time">
+                    <li onclick="doTime(0,this)">全部</li>
+                    <li onclick="doTime(1,this)">近五分钟</li>
+                    <li onclick="doTime(2,this)">近一天</li>
+                    <li onclick="doTime(3,this)">近一周</li>
+                    <li onclick="doTime(4,this)">近一月</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="dataArea">
+        <ul class="d-item-data">
+            <li>
+                <div class="i-img"><a href="view.html?bookId=1"><img src="images/q.png"></a></div>
+                <div class="i-name"><span class="it-n">射雕英雄传</span><span class="it-a">金庸</span></div>
+                <div class="i-price"><span class="it-c">￥</span><span class="it-k">100</span></div>
+                <div class="i-favorite"><span class="it-c">1</span><span class="it-k">赞</span></div>
+            </li>
+        </ul>
+    </div>
+    <div class="pageArea">
+        <ul>
+            <li onclick="goToPage('--')">首页</li>
+            <li onclick="goToPage('-')">上一页</li>
+            <div class="page">
+
+            </div>
+            <li onclick="goToPage('+')">下一页</li>
+            <li onclick="goToPage('++')">尾页</li>
+        </ul>
+    </div>
+</div>
+<div id="errorMsg"></div>
+</body>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+    $(function(){
+        cateQuery();
+        pageQuery();
+    });
+
+</script>
+</html>

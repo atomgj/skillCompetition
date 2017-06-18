@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="top"></div>
+<div class="main">
+    <div class="dataArea">
+        <input type="hidden" id="bookId"/>
+        <input type="hidden" id="favorite"/>
+        <ul class="d-item-data">
+            <li>
+                <div class="i-img"><img class="it-img"></div>
+                <div class="i-name"><input class="it-name" placeholder="书名"/></div>
+                <div class="i-name"><input class="it-author" placeholder="作者"/></div>
+                <div class="i-price"><input class="it-price" placeholder="价格"/></div>
+                <div class="i-cate"><input class="it-cate" placeholder="分类"/></div>
+                <div class="btn"><input type="button" value="提交" onclick="edit()"></div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="errorMsg"></div>
+</body>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+    $(function () {
+        parseURL(true)
+    });
+
+</script>
+</html>
