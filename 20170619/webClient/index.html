@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="top">
+    <div class="row">
+        <div class="label">
+            &nbsp;
+        </div>
+        <div class="elem">
+            <a href="login.html">重新登录</a>
+        </div>
+    </div>
+</div>
+<div class="main">
+    <div class="center">
+        <div class="searchArea">
+            <ul>
+                <li>
+                    <div class="label">分类</div>
+                    <ul class="s-item-c">
+                        <li class="active" onclick="doCategory(0, this)">全部</li>
+                        <li onclick="doCategory(1, this)">文学</li>
+                        <li onclick="doCategory(1, this)">小说</li>
+                        <li onclick="doCategory(2, this)">科技</li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="label">价格</div>
+                    <ul class="s-item-p">
+                        <li class="active" onclick="doPrice(0, this)">全部</li>
+                        <li onclick="doPrice(1, this)">0-50</li>
+                        <li onclick="doPrice(1, this)">50-100</li>
+                        <li onclick="doPrice(2, this)">100-150</li>
+                        <li onclick="doPrice(3, this)">150-200</li>
+                        <li onclick="doPrice(4, this)">200-</li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="label">时间</div>
+                    <ul class="s-item-t">
+                        <li class="active" onclick="doTime(0, this)">全部</li>
+                        <li onclick="doTime(1, this)">近一天</li>
+                        <li onclick="doTime(1, this)">三天前</li>
+                        <li onclick="doTime(2, this)">一周前</li>
+                        <li onclick="doTime(3, this)">近5分钟</li>
+                        <li onclick="doTime(4, this)">近一月-</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="dataArea">
+            <ul class="d-items">
+                <li>
+                    <div class="i-img"><a href="view.html?bookId=1"><img src="images/1.jpg"/></a></div>
+                    <div class="i-price"><span class="unit">￥</span><span class="price">100</span></div>
+                    <div class="i-name">射雕英雄传</div>
+                    <div class="i-author">金庸</div>
+                    <div class="i-fav"><span class="fav">100</span><span class="zan">赞</span></div>
+                    <div class="i-edit"><a href="edit.html?bookId=1">编辑</a></div>
+                </li>
+            </ul>
+        </div>
+        <div class="pageArea">
+            <ul class="p-items">
+                <li id="first" onclick="gotoPage('--')">首页</li>
+                <li id="prev"  onclick="gotoPage('-')">上一页</li>
+                <div class="page">
+                    <li class="active" onclick="gotoPage(1)">1</li>
+                    <li onclick="gotoPage(2)">2</li>
+                </div>
+                <li id="next"  onclick="gotoPage('+')">下一页</li>
+                <li id="last"  onclick="gotoPage('++')">尾页</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+    $(function () {
+        cateQuery();
+        pageQuery();
+    });
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="top">
+    <div class="row">
+        <div class="label">
+            &nbsp;
+        </div>
+        <div class="elem">
+            <a href="login.html">重新登录</a>
+        </div>
+    </div>
+</div>
+<div class="main">
+    <div class="center">
+        <div class="dataArea">
+            <input type="hidden" id="bookId"/>
+            <div class="d-items-single">
+                <div class="i-img"><a href="view.html?bookId=1"><img src="images/1.jpg"/></a></div>
+                <div class="i-price"><span class="unit">￥</span><input type="text" id="price" placeholder="价格"/></div>
+                <div class="i-name"><input type="text" id="bookName" placeholder="书名"/></div>
+                <div class="i-author"><input type="text" id="author" placeholder="作者"/></div>
+                <div class="i-category"><input type="text" id="categoryName" placeholder="分类"/></div>
+            </div>
+            <div class="btn">
+                <input type="button" value="提交" onclick="edit()"/>
+                <input type="button" value="取消" onclick="cancel()"/>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+    $(function () {
+        load(true);
+    });
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="top">
+    <div class="row">
+        <div class="label">
+            &nbsp;
+        </div>
+        <div class="elem">
+            <a href="login.html">重新登录</a>
+        </div>
+    </div>
+</div>
+<div class="main">
+    <div class="center">
+        <div class="dataArea">
+            <input type="hidden" id="bookId"/>
+            <input type="hidden" id="favorite"/>
+            <div class="d-items-single">
+                <div class="i-img"><a href="view.html?bookId=1"><img src="images/1.jpg"/></a></div>
+                <div class="i-price"><span class="unit">￥</span><span class="price">100</span></div>
+                <div class="i-name">射雕英雄传</div>
+                <div class="i-author">金庸</div>
+                <div class="i-fav"><span class="fav">100</span><span class="zan" onclick="like()">赞</span></div>
+                <div class="i-category">金庸</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+    $(function () {
+        load();
+    });
+</script>
+</html>

@@ -74,7 +74,7 @@ serviceImpl = {
         var rt = {};
         var start = " select ",
             strC = " count(*) as count ",
-            strL = " a.*,c.categoryName,d.fav ",
+            strL = " a.*,c.categoryName,case when  d.fav is null then 0 else d.fav end as fav ",
             end = " from t_book a left join t_book_category b on a.bookId = b.bookId " +
                 "left join t_category c on b.categoryId=c.categoryId " +
                 "left join (select count(*) as fav, bookId from t_favorite group by bookId) d on a.bookId = d.bookId where 1=1",
@@ -83,6 +83,9 @@ serviceImpl = {
 
         if (param.categoryName) {
             condition += " and categoryName like '%" + param.categoryName + "%'";
+        }
+        if (param.categoryId) {
+            condition += " and c.categoryId = '" + param.categoryId + "' ";
         }
         if (param.bookName) {
             condition += " and a.bookName = '" + param.bookName + "' ";
@@ -141,7 +144,7 @@ serviceImpl = {
     view: function (param, callback) {
         var sql, arr, rt = {};
         var start = " select ",
-            strL = " a.*,c.categoryName,d.fav ",
+            strL = " a.*,c.categoryName,case when  d.fav is null then 0 else d.fav end as fav ",
             end = " from t_book a left join t_book_category b on a.bookId = b.bookId " +
                 "left join t_category c on b.categoryId=c.categoryId " +
                 "left join (select count(*) as fav, bookId from t_favorite group by bookId) d on a.bookId = d.bookId where 1=1",
