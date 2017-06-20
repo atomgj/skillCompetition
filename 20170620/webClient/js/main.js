@@ -179,7 +179,7 @@ if(user){
 	$('#loginUser').text(user.username);
 }
 
-function cateQuery(){
+function cateQuery(flag){
 	var param = {
 		userId: user.userId
 	}
@@ -191,9 +191,16 @@ function cateQuery(){
 			var rt = JSON.parse(rep);
 			if(rt.code == 200){
 			   var rows = rt.data, i;
-			   $('.s-item-c li:first').nextAll().remove();
-			   for(i=0; i<rows.length; i++){
-					$('.s-item-c').append(`<li onclick="doCategory(${rows[i].categoryId}, this)">${rows[i].categoryName}</li>`);
+			   if(flag){
+				   $('.cate-list').empty();
+				   for(i=0; i<rows.length; i++){
+						$('.cate-list').append(`<span onclick="setCategory(${rows[i].categoryId}, this)">${rows[i].categoryName}</span>`);
+				   }
+			   }else{
+				   $('.s-item-c li:first').nextAll().remove();
+				   for(i=0; i<rows.length; i++){
+						$('.s-item-c').append(`<li onclick="doCategory(${rows[i].categoryId}, this)">${rows[i].categoryName}</li>`);
+				   }
 			   }
 			}else{
 			   $('.errorMsg').html(rt.message); 
@@ -222,12 +229,13 @@ function pageQuery(){
 			   $('.d-item').empty();
 			   for(i=0;i<rows.length;i++){
 					$('.d-item').append(`<li>
-					<div class="d-item-i"><a href="view?bookId=${rows[i].bookId}"><img src="images/${rows[i].bookId}.jpg"/></a></div>
+					<div class="d-item-i"><a href="view.html?bookId=${rows[i].bookId}"><img src="images/${rows[i].bookId}.jpg"/></a></div>
 					<div class="d-item-i"><span class="i-name">${rows[i].bookName}</span></div>
 					<div class="d-item-i"><span class="i-author">${rows[i].author}</span></div>
 					<div class="d-item-i"><span class="i-unit">￥</span><span class="i-price">${rows[i].price}</span></div>
 					<div class="d-item-i"><span class="i-category">${rows[i].categoryName}</span></div>
 					<div class="d-item-i"><span class="i-favorite">${rows[i].fav}</span><span class="i-zan">赞</span></div>
+					<div class="d-item-i"><a href="edit.html?bookId=${rows[i].bookId}">编辑</a></div>
 				</li>`);
 			   }
 
@@ -382,4 +390,120 @@ function doSort(columns, self){
 	$(self).append(`<div class="sortType ${sort}"></div>`);
 
 	pageQuery();
+}
+
+function parseURL(flag){
+	var url = location.href,
+		param = url.split('?')[1],
+		id = param.split('=')[1];
+
+	view(id, flag);
+}
+
+function view(id, flag){
+
+	if(flag){
+		cateQuery(true);
+	}
+	var param = {
+		bookId : id,
+		userId: user.userId
+	};
+	$.ajax({
+		url: 'http://127.0.0.1:3000/view',
+		type: 'POST',
+		data: param,
+		success: function(rep){
+			var rt = JSON.parse(rep);
+			if(rt.code == 200){
+			   var row = rt.data, i;
+			   if(flag){
+				   $('#img').attr('src', 'images/'+ row.bookId + ".jpg");
+				   $('#bookName').val(row.bookName);
+				   $('#author').val(row.author);
+				   $('#categoryName').val(row.categoryName);
+				   $('#price').val(row.price);
+			   }else{
+					$('.d-item-view').empty().append(`<li>
+						<div class="d-item-i"><img src="images/${row.bookId}.jpg"/></div>
+						<div class="d-item-i"><span class="i-name">${row.bookName}</span></div>
+						<div class="d-item-i"><span class="i-author">${row.author}</span></div>
+						<div class="d-item-i"><span class="i-unit">￥</span><span class="i-price">${row.price}</span></div>
+						<div class="d-item-i"><span class="i-category">${row.categoryName}</span></div>
+						<div class="d-item-i"><span class="i-favorite">${row.fav}</span><span class="i-zan" onclick="like()">赞</span></div>
+						<li>`);
+			   }
+			   $('#bookId').val(id);
+			   $('#favorite').val(row.fav);
+			}else{
+			   $('.errorMsg').html(rt.message); 
+			}
+		},
+		error: function(){
+			$('.errorMsg').html('http server error!');
+		}
+	});
+}
+
+function showCategory(){
+	$('.cate-list').show();
+}
+function setCategory(id, self){
+	$(self).siblings().removeClass('active');
+	$(self).addClass('active');
+
+	$('#categoryName').val($(self).text());
+	$('.cate-list').hide();
+}
+
+function edit(){
+	var param = {
+		userId: user.userId,
+		bookId: $('#bookId').val(),
+		bookName: $('#bookName').val(),
+		price: $('#price').val(),
+		author: $('#author').val(),
+		categoryName: $('#categoryName').val()
+	}
+	$.ajax({
+		url: 'http://127.0.0.1:3000/edit',
+		type: 'POST',
+		data: param,
+		success: function(rep){
+			var rt = JSON.parse(rep);
+			if(rt.code == 200){
+			   location.href="view.html?bookId="+param.bookId;
+			}else{
+			   $('.errorMsg').html(rt.message); 
+			}
+		},
+		error: function(){
+			$('.errorMsg').html('http server error!');
+		}
+	});
+}
+
+function like(){
+	var param = {
+		bookId: $('#bookId').val(),
+		userId: user.userId
+	}
+	$.ajax({
+		url: 'http://127.0.0.1:3000/like',
+		type: 'POST',
+		data: param,
+		success: function(rep){
+			var rt = JSON.parse(rep);
+			if(rt.code == 200){
+			   var count = parseInt($('#favorite').val()) + parseInt(rt.data);
+			   $('#favorite').val(count);
+			   $('.i-favorite').text(count);
+			}else{
+			   $('.errorMsg').html(rt.message); 
+			}
+		},
+		error: function(){
+			$('.errorMsg').html('http server error!');
+		}
+	});
 }

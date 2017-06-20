@@ -1,3 +1,6 @@
+body{
+	background-color: #76cdd3;
+}
 body, a, div, span, label{
 	font-size: 12px;
 	color: #000;
@@ -72,13 +75,13 @@ a:hover{
 }
 
 .active{
-	color: #b93600;
+	color: #003c4e;
 	font-weight: bold;
 	font-size: 12px;
 }
 
 .disabled{
-	color: #cdcdcd;
+	color: #868686;
 }
 
 ul li{
@@ -118,7 +121,7 @@ ul li{
 	width: 50px;
 	font-weight: bold;
 	font-size: 14px;
-	color: #b93600;
+	color: #003c4e;
 }
 
 [class^="s-item-"] li {
@@ -140,12 +143,12 @@ ul li{
     height: 240px;
 	padding:2px;
 	border: 1px #cfeef0 dotted;
-    margin: 2px;
+    margin: 3px;
     border-radius: 5px;
 }
 
 .d-item li:hover{
-	outline: #008997 auto 5px;
+	outline: #fff auto 5px;
 }
 
 .pageArea{
@@ -203,4 +206,30 @@ ul li{
 	border-right: 3px solid transparent;
 	width:0;
 	height:0;
+}
+
+.cate-form{
+	position: relative;
+}
+
+.cate-list{
+	display: none;
+    width: 180px;
+    position: absolute;
+    left: 1px;
+    top: 30px;
+    background-color: #76cdd3;
+    border: 1px #cfeef0 solid;
+    border-radius: 2px;
+}
+
+.cate-list span{
+	display: block;
+    font-size: 12px;
+    line-height: 24px;
+    border-bottom: 1px #b8f9fd dotted;
+}
+
+.i-zan{
+	cursor: pointer;
 }
