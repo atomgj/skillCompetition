@@ -68,7 +68,7 @@ serviceImpl = {
 						rt.code = 500;
 						rt.message = e.message;
 					}else{
-						rt.code = 600;
+						rt.code = 200;
 						rt.message = "register success";
 					}
 					callback(rt);
@@ -89,7 +89,7 @@ serviceImpl = {
 				rt.message = e.message;
 			}else{
 				rt.code = 200;
-				rt.message = r;
+				rt.data = r;
 			}
 			callback(rt);
 		});
@@ -116,13 +116,13 @@ serviceImpl = {
 
 		if(param.timeType){
 			if(param.timeType == 1){
-				condition = " and a.updateTime > date_sub(nows(), interval 1 day)";
+				condition = " and a.updateTime > date_sub(now(), interval 1 day)";
 			}else if(param.timeType == 2){
-				condition = " and a.updateTime > date_sub(nows(), interval 7 day)";
+				condition = " and a.updateTime > date_sub(now(), interval 7 day)";
 			}else if(param.timeType == 3){
-				condition = " and a.updateTime > date_sub(nows(), interval 1 hour)";
+				condition = " and a.updateTime > date_sub(now(), interval 1 hour)";
 			}else if(param.timeType == 4){
-				condition = " and a.updateTime > date_sub(nows(), interval 5 minute)";
+				condition = " and a.updateTime > date_sub(now(), interval 5 minute)";
 			}
 		}
 

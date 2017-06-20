@@ -1,0 +1,206 @@
+body, a, div, span, label{
+	font-size: 12px;
+	color: #000;
+}
+
+input[type=text], input[type=password], input[type=button]{
+	width: 180px;
+	height: 24px;
+	border: 1px #008997 solid;
+	border-radius: 2px;
+	padding-left: 2px;
+	margin: 2px 0;
+}
+
+input[type=button]{
+	width: 184px;
+	height: 28px;
+	background-color: #fff;
+	color: #000;
+}
+
+
+input[type=button]:hover{
+	background-color: #008997;
+	color: #fff;
+}
+
+a{
+	text-decoration: none;
+	cursor: pointer;
+}
+a:hover{
+	color: #c17500 !important;
+}
+
+.form{
+	width: 600px;
+	margin: auto;
+}
+
+.row{
+	margin : 10px;
+	line-height: 28px;
+}
+
+.title{
+	font-weight: 500;
+	font-size: 14px;
+}
+
+.label{
+	float: left;
+    text-align: right;
+    width: 200px;
+    padding-right: 10px;
+}
+
+.elem{
+	float: left;
+    width: 300px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.invalid{
+	border-color: #b93600 !important;
+}
+
+.error{
+	color: #b93600;
+	display: block;
+}
+
+.active{
+	color: #b93600;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.disabled{
+	color: #cdcdcd;
+}
+
+ul li{
+	list-style: none;
+}
+
+.main{
+    width: 1024px;
+    margin: auto;
+}
+
+.top{
+	position: relative;
+    margin: auto;
+    width: 100%;
+}
+
+.center{
+	position: relative;
+    top: 30px;
+    width: 100%;;
+    height: 100%;
+}
+
+.searchArea{
+	clear: both;
+	padding: 10px; 
+}
+
+.s-item{
+	display: flex;
+	line-height: 30px;
+	border-bottom: 1px #cfeef0 dotted;
+    margin: 5px;
+}
+.s-item span{
+	width: 50px;
+	font-weight: bold;
+	font-size: 14px;
+	color: #b93600;
+}
+
+[class^="s-item-"] li {
+	width: 65px;
+	float: left;
+}
+
+.dataArea{
+	clear: both;
+	padding: 10px;   
+}
+
+.d-item{
+}
+
+.d-item li{
+	float: left;
+    width: 180px;
+    height: 240px;
+	padding:2px;
+	border: 1px #cfeef0 dotted;
+    margin: 2px;
+    border-radius: 5px;
+}
+
+.d-item li:hover{
+	outline: #008997 auto 5px;
+}
+
+.pageArea{
+	clear: both;
+	padding: 10px;
+}
+
+.p-item{
+    width: 300px;
+    height: 30px;
+    line-height: 30px;
+    float: right;
+}
+
+.p-item li{
+	float: left;
+	width: 40px;
+	text-align: center;
+}
+
+.s-item ul li, .pageArea ul li{
+	cursor: pointer;
+}
+
+.globalSearch{
+	width: 250px;
+    margin: auto;
+}
+
+.globalSearch input[type=button]{
+	width: 60px;
+}
+
+.user{
+	float: right;
+	margin-right: 20px;
+}
+
+
+.up{
+	margin-left:5px;
+    display: inline-block;
+	border-bottom: 10px solid #b93600;
+	border-left: 3px solid transparent;
+	border-right: 3px solid transparent;
+	width:0;
+	height:0;
+}
+
+.down{
+	margin-left:5px;
+    display: inline-block;
+	border-top: 10px solid #b93600;
+	border-left: 3px solid transparent;
+	border-right: 3px solid transparent;
+	width:0;
+	height:0;
+}

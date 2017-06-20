@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="top"></div>
+<div class="main">
+    <div class="form">
+        <div class="row">
+            <div class="label">
+                &nbsp;
+            </div>
+            <div class="elem">
+                <span class="title">用户注册</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">
+                用户名:
+            </div>
+            <div class="elem">
+                <input type="text" id="username" placeholder="用户名"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">
+                邮箱:
+            </div>
+            <div class="elem">
+                <input type="text" id="email" placeholder="邮箱"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">
+                手机号:
+            </div>
+            <div class="elem">
+                <input type="text" id="mobile" placeholder="手机号"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">
+                密码:
+            </div>
+            <div class="elem">
+                <input type="password" id="password" placeholder="密码"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">
+                确认密码:
+            </div>
+            <div class="elem">
+                <input type="password" id="ckPassword" placeholder="确认密码"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">
+                &nbsp;
+            </div>
+            <div class="elem">
+                <input type="button" value="注册" onclick="register()"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="label">
+                &nbsp;
+            </div>
+            <div class="elem">
+                <a href="login.html">已有账号，直接登录</a>
+            </div>
+        </div>
+    </div>
+    <div class="errorMsg"></div>
+</div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+    $(function () {
+    });
+</script>
+</html>
