@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="main">
+    <div class="top">
+        <span class="login-user"></span><a href="login.html">重新登录</a>
+    </div>
+    <div class="center">
+            <div class="globalArea">
+                <input type="text" placeholder="书名/作者/分类" id="searchAll"/><input type="button" id="searchBtn" value="查询" onclick="searchAll()"/>
+            </div>
+            <ul class="s-item">
+                <li class="s-item-sub">
+                    <span class="s-item-key">分类:</span>
+                    <ul class="s-item-c">
+                        <li class="active" onclick="doSearch(0, this, 1)">全部</li>
+                    </ul>
+                </li>
+                <li class="s-item-sub">
+                    <span class="s-item-key">价格:</span>
+                    <ul class="s-item-p">
+                        <li class="active" onclick="doSearch(0, this, 2)">全部</li>
+                        <li onclick="doSearch(1, this, 2)">0~50</li>
+                        <li onclick="doSearch(2, this, 2)">50~100</li>
+                        <li onclick="doSearch(3, this, 2)">100~150</li>
+                        <li onclick="doSearch(4, this, 2)">150~200</li>
+                    </ul>
+                </li>
+                <li class="s-item-sub">
+                    <span class="s-item-key">时间:</span>
+                    <ul class="s-item-t">
+                        <li class="active" onclick="doSearch(0, this, 3)">全部</li>
+                        <li onclick="doSearch(1, this, 3)">近5分钟</li>
+                        <li onclick="doSearch(2, this, 3)">近1天</li>
+                        <li onclick="doSearch(3, this, 3)">近3天</li>
+                        <li onclick="doSearch(4, this, 3)">2天前</li>
+                    </ul>
+                </li>
+                <li class="s-item-sub">
+                    <span class="s-item-key">排序:</span>
+                    <ul class="s-item-o">
+                        <li class="active" onclick="doSearch('updateTime', this, 4)">时间<div class="sortType up"></div></li>
+                        <li onclick="doSearch('price', this, 4)">价格<div class="sortType"></div></li>
+                        <li onclick="doSearch('fav', this, 4)">收藏数<div class="sortType"></div></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="d-item">
+                <li>
+                    <div class="i-item"><a href="view.html?bookId=1"><img class="d-img" src="images/1.jpg"/></a></div>
+                    <div class="i-item"><div class="d-name">射雕英雄传</div></div>
+                    <div class="i-item"><div class="d-author">金庸</div></div>
+                    <div class="i-item"><div class="d-price"><span class="unit">￥</span><span class="price">100</span></div></div>
+                    <div class="i-item"><div class="d-category">小说</div></div>
+                    <div class="i-item"><div class="d-favorite"><span class="fav">1</span><span class="d-zan">赞</span></div></div>
+                    <div class="i-item"><a href="edit.html?bookId=1">编辑</a></div>
+                </li>
+            </ul>
+            <ul class="p-item">
+                <li id="first" onclick="gotoPage('--')">首页</li>
+                <li id="prev" onclick="gotoPage('-')">上一页</li>
+                <div class="p-page">
+
+                </div>
+                <li id="next" onclick="gotoPage('+')">下一页</li>
+                <li id="last" onclick="gotoPage('++')">尾页</li>
+            </ul>
+    </div>
+
+</div>
+<div class="tip">
+    <div class="errorMsg"></div>
+</div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+    $(function(){
+        cateQuery();
+        pageQuery();
+    });
+</script>
+</html>

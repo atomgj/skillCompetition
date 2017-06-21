@@ -1,0 +1,248 @@
+body, div, a, span{
+    font-size: 12px;
+}
+
+input[type=text], input[type=password], input[type=button]{
+    width: 180px;
+    height: 30px;
+    border:1px cadetblue solid;
+    border-radius: 2px;
+}
+
+input[type=button]{
+
+    width: 182px;
+    height: 31px;
+    color: #000;
+    background: #ffffff;
+}
+
+input[type=button]:hover{
+    color: #fff;
+    background: cadetblue;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+a:hover{
+    color: brown;
+}
+
+.main{
+    width: 1024px;
+    margin: auto;
+}
+
+.top{
+    width: 200px;
+    float: right;
+}
+.login-user{
+    padding-right: 20px;
+    font-weight: 600;
+}
+
+.form{
+    width: 600px;
+    margin: auto;
+    padding-top: 100px;
+}
+
+.row{
+    line-height: 30px;
+    display: inline-block;
+}
+
+.title{
+    font-size : 14px;
+    font-weight: bold;
+}
+
+.label{
+    float: left;
+    width: 200px;
+    text-align: right;
+    padding-right: 20px;
+}
+.elem{
+    float: left;
+    width: 300px;
+    text-align: left;
+}
+
+label{
+    display: block;
+}
+
+.error{
+    color: brown;
+    font-size: 10px;
+}
+.invalid{
+    border-color: brown!important;
+}
+
+.center{
+    width: 100%;
+    margin: 10px;
+}
+
+.globalArea{
+    height: 50px;
+    width: 600px;
+    margin: auto;
+}
+#searchAll{
+    width: 300px;
+    height: 40px;
+    padding-left: 5px;
+}
+#searchBtn{
+    width: 60px;
+    height: 42px;
+    margin-left: 5px;
+}
+.searchArea{
+    width: 100%;
+}
+
+.s-item, .d-item, .p-item{
+    clear: both;
+    width: 100%;
+    overflow: hidden;
+    -webkit-padding-start: 0px;
+}
+.s-item-sub{
+    list-style: none;
+    line-height: 35px;
+}
+
+.s-item-key{
+    font-weight: 600;
+}
+
+.s-item ul{
+    display: inline-flex;
+}
+
+.s-item ul li {
+    width: 60px;
+    display: inline;
+}
+
+.sortType{
+    display: inline;
+}
+
+.dataArea{
+    width: 100%;
+    clear: both;
+}
+
+.d-item li{
+    float: left;
+    width: 190px;
+    height: 250px;
+    list-style: none;
+    margin: 5px;
+    text-align: center;
+}
+
+.pageArea{
+    clear: both;
+}
+
+.p-item{
+    width: 300px;
+    float: right;
+}
+.p-item li{
+    float: left;
+    width: 40px;
+    text-align: center;
+    cursor: pointer;
+    list-style: none;
+}
+
+.p-page{
+    display: inline;
+}
+
+
+.up{
+    margin-left: 5px;
+    display: inline-block;
+    border-bottom: 10px solid brown;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    width: 0;
+    height: 0;
+}
+
+.down{
+    margin-left: 5px;
+    display: inline-block;
+    border-top: 10px solid brown;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    width: 0;
+    height: 0;
+}
+
+.active{
+    color: brown;
+    font-weight: 700;
+}
+.disabled{
+    color: silver;
+}
+
+.cate-list{
+    width: 180px;
+    display: none;
+    border: 1px #a3b587 solid;
+}
+.cate-list span{
+    width: 180px;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px #a3b587 solid;
+    display: block;
+}
+
+
+.testArea{
+    padding-top:200px;
+    display: inline-flex;
+}
+
+.testArea input{
+    padding-left:5px;
+}
+
+.step1, .step2{
+    width: 180px;
+    height: 32px;
+    margin: 5px;
+    float: left;
+}
+.step2{
+    display: none;
+}
+.pro-list, .city-list{
+    width: 180px;
+    display: none;
+    border: 1px #a3b587 solid;
+}
+.pro-list span, .city-list span{
+    width: 180px;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px #a3b587 solid;
+    display: block;
+    padding-left: 5px;
+}

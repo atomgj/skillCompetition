@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="main">
+    <div class="top">
+        <span class="login-user"></span><a href="login.html">重新登录</a>
+    </div>
+    <div class="center">
+        <input type="hidden" id="bookId"/>
+        <input type="hidden" id="favorite"/>
+        <div class="i-item"><img class="d-img" src="images/1.jpg"/></div>
+        <div class="i-item"><div class="d-name"><input type="text" id="bookName" placeholder="书名"/></div></div>
+        <div class="i-item"><div class="d-author"><input type="text" id="author" placeholder="作者"/></div></div>
+        <div class="i-item"><div class="d-price"><span class="price"><input type="text" id="price" placeholder="价格"/></span><span class="unit">￥</span></div></div>
+        <div class="i-item">
+            <div class="d-category">
+                <input type="text" id="categoryName" placeholder="分类" onclick="showCateList()" readonly/>
+                <div class="cate-list">
+
+                </div>
+            </div>
+        </div>
+        <div class="i-item"><input type="button" value="提交" onclick="edit()"/></div>
+
+        <div class="testArea">
+            <div class="step1">
+                <input type="text" readonly id="province" placeholder="省份" onclick="showProList()"/>
+                <div class="pro-list">
+                    <span class="i-t">江苏</span>
+                    <span class="i-t">上海</span>
+                    <span class="i-t">山东</span>
+                </div>
+            </div>
+            <div class="step2">
+                <input type="text" readonly id="city" placeholder="城市" onclick="showCityList()"/>
+                <div class="city-list">
+                    <span class="i-t">江苏</span>
+                    <span class="i-t">上海</span>
+                    <span class="i-t">山东</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="tip">
+    <div class="errorMsg"></div>
+</div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+    $(function(){
+        parseURL(true);
+    });
+</script>
+</html>
