@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="main">
+    <div class="top">
+        <span class="login-user"></span><a href="login.html">重新登录</a>
+    </div>
+    <div class="center">
+        <ul class="d-item">
+            <input type="hidden" id="bookId"/>
+            <input type="hidden" id="favorite"/>
+            <li>
+                <div class="d-img"><a href="view.html?bookId=1"><img id="img" src="images/1.jpg" alt=""></a></div>
+                <div class="d-name"><span class="bookName">>射雕英雄传</span></div>
+                <div class="d-author"><span class="author">>金庸</span></div>
+                <div class="d-category"><span class="categoryName">小说</span></div>
+                <div class="d-price"><span class="price">100</span><span class="unit">￥</span></div>
+                <div class="d-favorite"><span class="favorite">100</span><span class="zan" onclick="like()">赞</span></div>
+                <div class="d-edit"><a id="edit" href="edit.html?bookId=1">编辑</a></div>
+            </li>
+        </ul>
+
+    </div>
+</div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+    $(function(){
+        parseURL()
+    });
+</script>
+</html>

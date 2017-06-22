@@ -32,7 +32,7 @@ route.controller = function(request, response){
             request.on('data', function(data){
                 str += data;
             });
-            response.on('end', function(){
+            request.on('end', function(){
                 param = queryString.parse(str);
                 callback(param, response);
             })

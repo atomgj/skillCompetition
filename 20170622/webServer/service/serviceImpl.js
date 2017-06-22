@@ -89,38 +89,38 @@ serviceImpl = {
         }
         if(param.priceType){
             if(param.priceType ==1){
-                condition += "and a.price between 1 and 50";
+                condition += " and a.price between 1 and 50";
             }else if(param.priceType == 2){
-                condition += "and a.price between 50 and 100";
+                condition += " and a.price between 50 and 100";
             }else if(param.priceType == 3){
-                condition += "and a.price between 100 and 200";
+                condition += " and a.price between 100 and 200";
             }else if(param.priceType == 4){
-                condition += "and a.price > 200 ";
+                condition += " and a.price > 200 ";
             }
         }
         if(param.timeType){
             if(param.timeType ==1){
-                condition += "and a.updateTime > data_sub(now(), interval 1 day)";
+                condition += " and a.updateTime > date_sub(now(), interval 1 day)";
             }else if(param.timeType == 2){
-                condition += "and a.updateTime < data_sub(now(), interval 3 day)";
+                condition += " and a.updateTime < date_sub(now(), interval 3 day)";
             }else if(param.timeType == 3){
-                condition += "and a.updateTime < data_sub(now(), interval 7 day)";
+                condition += " and a.updateTime < date_sub(now(), interval 7 day)";
             }else if(param.timeType == 4){
-                condition += "and a.updateTime > data_sub(now(), interval 5 minute)";
+                condition += " and a.updateTime > date_sub(now(), interval 5 minute)";
             }
         }
         sql = start + strc + end + condition;
         db.query(sql, function(e, r){
             if(e){
                 rt.code = 500;
-                rt.message = e.message;
+                rt.message = sql;
                 callback(rt);
             }else{
                 sql = start + strl + end + condition + order + limit;
                 db.query(sql, function(e1, r1){
                     if(e1){
                         rt.code = 500;
-                        rt.message = e1.message;
+                        rt.message = sql;
                     }else{
                         rt.code = 200;
                         rt.data = {
