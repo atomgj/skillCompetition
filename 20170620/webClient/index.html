@@ -18,6 +18,20 @@
 			<input type="text" id="global" placeholder="书名/分类/作者"/>
 			<input type="button" onclick="globalSearch()" value="查询"/>
 		</div>
+		<div class="showArea">
+			<ul>
+				<li class="curr"><a href=""><img src="images/10001.jpg" class="lun" alt=""></a></li>
+				<li><a href=""><img src="images/10002.jpg" class="lun" alt=""></a></li>
+				<li><a href=""><img src="images/10003.jpg" class="lun" alt=""></a></li>
+				<li><a href=""><img src="images/10004.jpg" class="lun" alt=""></a></li>
+			</ul>
+			<div class="pageBtn">
+				<div class="ac" onclick="goPage(0)"></div>
+				<div onclick="goPage(1)"></div>
+				<div onclick="goPage(2)"></div>
+				<div onclick="goPage(3)"></div>
+			</div>
+		</div>
 		<div class="searchArea">
 			<ul>
 				<li class="s-item">
@@ -84,7 +98,15 @@
 			</ul>
 		</div>
 	</div>
-    <div class="errorMsg"></div>
+
+	<div class="dialog">
+
+		<div class="title">友情提示</div>
+		<div class="content"><div class="errorMsg"></div></div>
+		<div class="footer">
+			<input type="button" onclick="closeDiaglog()" value="关闭" />
+		</div>
+	</div>
 </div>
 </body>
 <script src="js/jquery-3.2.1.min.js"></script>

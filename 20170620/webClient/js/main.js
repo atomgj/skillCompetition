@@ -203,7 +203,9 @@ function cateQuery(flag){
 				   }
 			   }
 			}else{
-			   $('.errorMsg').html(rt.message); 
+			   $('.errorMsg').html(rt.message);
+			   $('.dialog').addClass('on');
+			   $('.main').addClass('pop');
 			}
 		},
 		error: function(){
@@ -251,15 +253,18 @@ function pageQuery(){
 
 			   checkPage();
 			}else{
-			   $('.errorMsg').html(rt.message); 
+			   $('.errorMsg').html(rt.message);
+                $('.dialog').addClass('on');
+                $('.main').addClass('pop');
 			}
 		},
 		error: function(){
 			$('.errorMsg').html('http server error!');
+            $('.dialog').addClass('on');
+            $('.main').addClass('pop');
 		}
 	});
 }
-
 
 function gotoPage(symb){
 	var no = search.pageNo;
@@ -487,7 +492,7 @@ function like(){
 	var param = {
 		bookId: $('#bookId').val(),
 		userId: user.userId
-	}
+	};
 	$.ajax({
 		url: 'http://127.0.0.1:3000/like',
 		type: 'POST',
@@ -506,4 +511,24 @@ function like(){
 			$('.errorMsg').html('http server error!');
 		}
 	});
+}
+
+function goPage(id){
+    $('.showArea .curr').fadeOut().removeClass('curr');
+    $('.showArea ul').find('li').eq(id).fadeIn().addClass('curr');
+
+	$('.pageBtn div').removeClass('ac');
+    $('.pageBtn').find('div').eq(id).addClass('ac');
+}
+
+setInterval(function(){
+    goPage(parseInt(Math.random()*4));
+},3000);
+
+
+
+
+function closeDiaglog(){
+    $('.main').removeClass('pop');
+    $('.dialog').removeClass('on');
 }

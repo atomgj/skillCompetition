@@ -233,3 +233,110 @@ ul li{
 .i-zan{
 	cursor: pointer;
 }
+
+
+.showArea{
+	clear: both;
+	width: 1000px;
+	margin: auto;
+	padding: 20px;
+
+}
+.showArea ul{
+	margin: auto;
+	width: 1000px;
+	height: 305px;
+	overflow: hidden;
+}
+
+.showArea ul li{
+	display: none;
+}
+
+.curr{
+	display: block!important;
+}
+
+.lun{
+	width: 1000px;
+	height: 305px;
+}
+.pageBtn{
+	position: absolute;
+	right: 400px;
+	top: 330px;
+}
+
+.pageBtn div{
+	width: 20px;
+	height: 20px;
+	color: #423e3e;
+	display: inline-block;
+	border-radius: 50%;
+	background-color: #fff;
+	text-align: center;
+	z-index: 9999999;
+	margin: 0 5px;
+}
+
+.ac{
+	background-color: red !important;
+}
+
+.dialog{
+	position: fixed;
+	display: none;
+	width: 300px;
+	height: 120px;
+	margin: auto;
+	background: #fff;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 4px 5px 6px 1px #ddd;
+}
+
+.dialog.on{
+	display: block;
+}
+
+.dialog .title{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	font-size: 18px;
+	padding-left: 15px;
+	font-weight: bold;
+}
+.dialog .content{
+	width: 100%;
+	height: 30px;
+	padding-left: 15px;
+}
+.dialog .footer{
+	width: 100%;
+	height: 20px;
+}
+
+.dialog .footer input{
+	width: 60px;
+	position: relative;
+	margin-right:20px;
+	float: right;
+}
+
+
+
+.pop{
+	opacity: 0.4;
+}
+
+
+ul{
+	-webkit-padding-start: 0px;
+	-webkit-margin-before: 0em;
+	-webkit-margin-after: 0em;
+}
