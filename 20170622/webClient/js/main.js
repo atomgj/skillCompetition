@@ -33,7 +33,7 @@ function ajaxRequest(url, param, success, error){
         type: 'post',
         success: function(rep){
             var rt = JSON.parse(rep);
-            if(rt.code){
+            if(rt.code == 200){
                 if(success){
                     success(rt);
                 }
@@ -42,6 +42,10 @@ function ajaxRequest(url, param, success, error){
                     error(rt);
                 }else{
                     $('.errorMsg').html(rt.message);
+                    if(rt.code == 401){
+                        localStorage.setItem('url', location.href);
+                        location.href = 'login.html';
+                    }
                 }
             }
         },

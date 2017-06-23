@@ -35,7 +35,7 @@ service = {
                 response.end(JSON.stringify(result));
             });
         }else{
-            response.end(JSON.stringify('{"code":401, "message": "unauthorized"}'));
+            response.end(JSON.stringify({code:401, message: "unauthorized"}));
         }
     },
     category: function(param, response){
@@ -44,7 +44,7 @@ service = {
                 response.end(JSON.stringify(result));
             });
         }else{
-            response.end(JSON.stringify('{"code":401, "message": "unauthorized"}'));
+            response.end(JSON.stringify({code:401, message: "unauthorized"}));
         }
     },
     view: function(param, response){
@@ -53,7 +53,7 @@ service = {
                 response.end(JSON.stringify(result));
             });
         }else{
-            response.end(JSON.stringify('{"code":401, "message": "unauthorized"}'));
+            response.end(JSON.stringify({code:401, message: "unauthorized"}));
         }
     },
     edit: function(param, response){
@@ -62,7 +62,7 @@ service = {
                 response.end(JSON.stringify(result));
             });
         }else{
-            response.end(JSON.stringify('{"code":401, "message": "unauthorized"}'));
+            response.end(JSON.stringify({code:401, message: "unauthorized"}));
         }
     },
     like: function(param, response){
@@ -71,7 +71,7 @@ service = {
                 response.end(JSON.stringify(result));
             });
         }else{
-            response.end(JSON.stringify('{"code":401, "message": "unauthorized"}'));
+            response.end(JSON.stringify({code:401, message: "unauthorized"}));
         }
     }
 };

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="main">
+
+    <div class="form">
+        <div class="row">
+            <div class="label">&nbsp;</div>
+            <div class="elem"><div class="title">用户登录</div></div>
+        </div>
+        <div class="row">
+            <div class="label">账户：</div>
+            <div class="elem"><input type="text" id="username" placeholder="用户名/手机号/邮箱"/></div>
+        </div>
+        <div class="row">
+            <div class="label">密码：</div>
+            <div class="elem"><input type="password" id="password" placeholder="用户名/手机号/邮箱"/></div>
+        </div>
+        <div class="row">
+            <div class="label">&nbsp;</div>
+            <div class="elem"><input type="checkbox" id="isRem" onclick="remember()"/>记住密码</div>
+        </div>
+        <div class="row">
+            <div class="label">&nbsp;</div>
+            <div class="elem"><input type="button" value="登录" onclick="login()"/></div>
+        </div>
+        <div class="row">
+            <div class="label">&nbsp;</div>
+            <div class="elem"><a href="register.html">注册</a></div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+    $(function(){
+        initLogin();
+    });
+</script>
+</html>

@@ -41,7 +41,7 @@ route.controller = function(request, response){
             callback(param, response);
         }
     }else{
-        response.end('{"code": 404, "message": "not found"}');
+        response.end(JSON.stringify({code:404, message: "not found"}));
     }
 
 };
